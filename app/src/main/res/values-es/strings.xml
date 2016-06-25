@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Intelequia Webhook Launcher</string>
+    <string name="action_settings">Configuración</string>
+    <string name="webhook_title">Nuevo Webhook</string>
+    <string name="webhook_name">Nombre</string>
+    <string name="webhook_expire">Caduca</string>
+</resources>
