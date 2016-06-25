@@ -1,52 +1,35 @@
 package com.intelequia.intelequiawebhooklauncher;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.view.View;
+import android.widget.ListView;
 
 import com.intelequia.intelequiawebhooklauncher.model.Webhook;
+import com.intelequia.intelequiawebhooklauncher.model.WebhookAdapter;
 import com.intelequia.intelequiawebhooklauncher.sqlite.DatabaseHelper;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import java.util.List;
 import java.util.UUID;
-import android.widget.TableRow.LayoutParams;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.loopj.android.http.*;
-
-import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
     public final static String ID = "com.intelequia.intelequiawebhooklauncher.ID";
     DatabaseHelper databaseHelper;
-    TableLayout table_layout;
+    ListView table_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         databaseHelper = DatabaseHelper.getInstance(this);
-        table_layout = (TableLayout) findViewById(R.id.table);
+        table_layout = (ListView) findViewById(R.id.table);
 
         SharedPreferences prefs = getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
@@ -108,19 +91,19 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        int i = 1;
+/*        int i = 1;
         // outer for loop
         for (Webhook web: webhooks) {
-            TableRow row = new TableRow(this);
-            View v = LayoutInflater.from(this).inflate(R.layout.tablerow, row,false);
+            LinearLayout row = new LinearLayout(this);
+            View v = LayoutInflater.from(this).inflate(R.layout.table_row, row,false);
             row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             TextView numberText = (TextView) v.findViewById(R.id.textId);
             numberText.setText(String.valueOf(i));
             TextView nameText = (TextView) v.findViewById(R.id.NameId);
             nameText.setText(web.name);
-            Button urlButton = (Button) v.findViewById(R.id.button);
-            urlButton.setText("Ejecutar");
+            final CircularProgressButton urlButton = (CircularProgressButton) v.findViewById(R.id.btnWithText);
+            urlButton.setText(getResources().getString(R.string.launch));
             i++;
             final String id = web.id;
             final MainActivity that = this;
@@ -142,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onClick(View view) {
-                           launchWebhook(url);
+                           launchWebhook(url, urlButton);
                         }
                     }
             );
@@ -150,37 +133,20 @@ public class MainActivity extends AppCompatActivity {
 
             table_layout.addView(v);
 
-        }
 
+        }*/
+
+        Webhook[] webhookArray = webhooks.toArray(new Webhook[webhooks.size()]);
+
+        WebhookAdapter adapter = new WebhookAdapter(this, R.layout.table_row, webhookArray);
+
+ /*       View header = (View)getLayoutInflater().inflate(R.layout.header, null);
+        table_layout.addHeaderView(header);*/
+
+        table_layout.setAdapter(adapter);
     }
 
-private void launchWebhook(String url){
-    AsyncHttpClient client = new AsyncHttpClient();
-    client.get(url, new AsyncHttpResponseHandler() {
-
-        @Override
-        public void onStart() {
-            // called before request is started
-        }
-
-        @Override
-        public void onSuccess(int statusCode, Header[] headers, byte[] response) {
-            Toast toast = Toast.makeText(getApplicationContext(),"EXITO", Toast.LENGTH_LONG);
-            toast.show();
-        }
-
-        @Override
-        public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
-            // called when response HTTP status is "4XX" (eg. 401, 403, 404)
-            Toast toast = Toast.makeText(getApplicationContext(),"ERRRORR", Toast.LENGTH_LONG);
-            toast.show();
-        }
-
-        @Override
-        public void onRetry(int retryNo) {
-            // called when request is retried
-        }
-    });
+public static void editWebhook(String id){
 
 }
 }

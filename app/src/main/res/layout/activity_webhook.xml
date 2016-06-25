@@ -24,8 +24,6 @@
         android:layout_height="wrap_content"
         android:hint="@string/webhook_name"
         app:met_floatingLabel="highlight"
-        app:met_minCharacters="5"
-        app:met_maxCharacters="10"
         android:layout_marginTop="23dp"
         android:layout_below="@+id/textView"
         android:id="@+id/nameText" />
@@ -49,13 +47,14 @@
         android:layout_marginTop="150dp"
         android:id="@+id/expireText"
         android:editable="false"
+        android:focusable="false"
         />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:src="@android:drawable/ic_menu_save"
+        android:src="@drawable/ic_save"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
 
@@ -68,10 +67,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:src="@android:drawable/ic_menu_delete"
+        android:src="@drawable/ic_delete"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
-
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 

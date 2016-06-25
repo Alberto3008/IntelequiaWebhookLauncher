@@ -25,7 +25,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
-    compile 'com.wdullaer:materialdatetimepicker:2.3.0'
     compile 'com.android.support:support-v4:24.0.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.github.dmytrodanylyk.circular-progress-button:library:1.1.3'
 }

@@ -1,21 +1,16 @@
 package com.intelequia.intelequiawebhooklauncher;
 
-import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
-import android.icu.util.Calendar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
 
 import com.intelequia.intelequiawebhooklauncher.model.Webhook;
 import com.intelequia.intelequiawebhooklauncher.sqlite.DatabaseHelper;
 import com.rengwuxian.materialedittext.MaterialEditText;
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+
 
 public class WebhookActivity extends AppCompatActivity {
     MaterialEditText expireText;
@@ -60,10 +55,8 @@ public class WebhookActivity extends AppCompatActivity {
                 webhook.name = nameText.getText().toString();
                 webhook.url = urlText.getText().toString();
                 webhook.expire = expireText.getText().toString();
-                Intent intent = getIntent();
-                intent.putExtra(MainActivity.ID,String.valueOf(databaseHelper.addOrUpdateWebhook(webhook)));
-                finish();
-                startActivity(intent);
+                databaseHelper.addOrUpdateWebhook(webhook);
+                onBackPressed();
             }
         });
 

@@ -5,4 +5,5 @@
     <string name="webhook_title">Nuevo Webhook</string>
     <string name="webhook_name">Nombre</string>
     <string name="webhook_expire">Caduca</string>
+    <string name="launch">Ejecutar</string>
 </resources>
