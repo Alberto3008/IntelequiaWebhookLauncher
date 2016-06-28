@@ -26,6 +26,7 @@
         app:met_floatingLabel="highlight"
         android:layout_marginTop="23dp"
         android:layout_below="@+id/textView"
+        android:singleLine="true"
         android:id="@+id/nameText" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
@@ -35,6 +36,7 @@
         app:met_floatingLabel="highlight"
         android:layout_below="@+id/textView"
         android:layout_alignParentEnd="true"
+        android:singleLine="true"
         android:layout_marginTop="90dp"
         android:id="@+id/urlText" />
 
@@ -55,11 +57,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:src="@drawable/ic_save"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin"
-
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="false" />
 
 
     <android.support.design.widget.FloatingActionButton
@@ -68,9 +72,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:src="@drawable/ic_delete"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="25dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="false" />
+
+
 
 </RelativeLayout>

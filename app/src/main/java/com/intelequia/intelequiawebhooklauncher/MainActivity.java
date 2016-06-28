@@ -146,7 +146,5 @@ public class MainActivity extends AppCompatActivity {
         table_layout.setAdapter(adapter);
     }
 
-public static void editWebhook(String id){
 
-}
 }
